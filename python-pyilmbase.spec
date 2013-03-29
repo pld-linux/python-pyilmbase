@@ -8,9 +8,14 @@ Group:		Libraries/Python
 Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
 # Source0-md5:	4585eba94a82f0b0916445990a47d143
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-am.patch
 URL:		http://www.openexr.com/
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1.6.3
 BuildRequires:	boost-python-devel
 BuildRequires:	ilmbase-devel >= 2.0.0
+BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	python-numpy-devel
@@ -33,6 +38,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	boost-python-devel
 Requires:	ilmbase-devel >= 2.0.0
+Requires:	libstdc++-devel
 
 %description devel
 Header files for IlmBase Python bindings.
@@ -43,8 +49,13 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 %prep
 %setup -q -n pyilmbase-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
