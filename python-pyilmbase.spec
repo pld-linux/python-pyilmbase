@@ -7,6 +7,7 @@ License:	BSD
 Group:		Libraries/Python
 Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
 # Source0-md5:	4585eba94a82f0b0916445990a47d143
+Patch0:		%{name}-link.patch
 URL:		http://www.openexr.com/
 BuildRequires:	boost-python-devel
 BuildRequires:	ilmbase-devel >= 2.0.0
@@ -41,6 +42,7 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 
 %prep
 %setup -q -n pyilmbase-%{version}
+%patch0 -p1
 
 %build
 %configure
@@ -50,7 +52,8 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+# parallel build fails at libPyImath/imathmodule install
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libPy*.la \
