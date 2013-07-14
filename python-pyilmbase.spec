@@ -58,7 +58,8 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 %{__automake}
 %configure
 
-%{__make}
+# g++ eats a lot of memory, don't run many in parallel
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
