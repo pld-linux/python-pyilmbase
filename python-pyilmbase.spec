@@ -1,12 +1,12 @@
 Summary:	Python bindings for the IlmBase libraries
 Summary(pl.UTF-8):	Wiązania Pythona do bibliotek IlmBase
 Name:		python-pyilmbase
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
-# Source0-md5:	4585eba94a82f0b0916445990a47d143
+# Source0-md5:	b2e3154df90014e30fd5fb89d00de111
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-am.patch
 URL:		http://www.openexr.com/
