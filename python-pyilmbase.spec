@@ -1,26 +1,25 @@
 Summary:	Python bindings for the IlmBase libraries
 Summary(pl.UTF-8):	Wiązania Pythona do bibliotek IlmBase
 Name:		python-pyilmbase
-Version:	2.1.0
+Version:	2.2.0
 Release:	1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
-# Source0-md5:	af1115f4d759c574ce84efcde9845d29
+# Source0-md5:	e84a6a4462f90b5e14d83d67253d8e5a
 Patch0:		%{name}-link.patch
-Patch1:		%{name}-am.patch
 URL:		http://www.openexr.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6.3
 BuildRequires:	boost-python-devel
-BuildRequires:	ilmbase-devel >= 2.1.0
+BuildRequires:	ilmbase-devel >= 2.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	python-numpy-devel
 BuildRequires:	rpm-pythonprov
-Requires:	ilmbase >= 2.1.0
+Requires:	ilmbase >= 2.2.0
 Requires:	python-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,7 +36,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	boost-python-devel
-Requires:	ilmbase-devel >= 2.1.0
+Requires:	ilmbase-devel >= 2.2.0
 Requires:	libstdc++-devel
 
 %description devel
@@ -49,7 +48,6 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 %prep
 %setup -q -n pyilmbase-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
