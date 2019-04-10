@@ -1,25 +1,25 @@
 Summary:	Python bindings for the IlmBase libraries
 Summary(pl.UTF-8):	Wiązania Pythona do bibliotek IlmBase
 Name:		python-pyilmbase
-Version:	2.2.0
-Release:	8
+Version:	2.2.1
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
-# Source0-md5:	e84a6a4462f90b5e14d83d67253d8e5a
+# Source0-md5:	363d99ecf7a4a03bb91ac427d86c01bd
 Patch0:		%{name}-link.patch
 URL:		http://www.openexr.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6.3
 BuildRequires:	boost-python-devel
-BuildRequires:	ilmbase-devel >= 2.2.0
+BuildRequires:	ilmbase-devel >= 2.2.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	python-numpy-devel
 BuildRequires:	rpm-pythonprov
-Requires:	ilmbase >= 2.2.0
+Requires:	ilmbase >= 2.2.1
 Requires:	python-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,7 +36,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	boost-python-devel
-Requires:	ilmbase-devel >= 2.2.0
+Requires:	ilmbase-devel >= 2.2.1
 Requires:	libstdc++-devel
 
 %description devel
@@ -54,7 +54,8 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--with-boost-python-libname=boost_python%(echo %{py_ver} | tr -d .)
 
 # g++ eats a lot of memory, don't run many in parallel
 %{__make} -j1
@@ -76,9 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libPyIex.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libPyIex.so.2
+%attr(755,root,root) %ghost %{_libdir}/libPyIex.so.23
 %attr(755,root,root) %{_libdir}/libPyImath.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libPyImath.so.2
+%attr(755,root,root) %ghost %{_libdir}/libPyImath.so.23
 %attr(755,root,root) %{py_sitedir}/iexmodule.so
 %attr(755,root,root) %{py_sitedir}/imathmodule.so
 %attr(755,root,root) %{py_sitedir}/imathnumpymodule.so
