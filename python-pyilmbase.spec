@@ -1,25 +1,26 @@
 Summary:	Python bindings for the IlmBase libraries
 Summary(pl.UTF-8):	Wiązania Pythona do bibliotek IlmBase
 Name:		python-pyilmbase
-Version:	2.2.1
-Release:	6
+Version:	2.3.0
+Release:	1
 License:	BSD
 Group:		Libraries/Python
-Source0:	http://download.savannah.gnu.org/releases/openexr/pyilmbase-%{version}.tar.gz
-# Source0-md5:	363d99ecf7a4a03bb91ac427d86c01bd
+#Source0Download: https://github.com/AcademySoftwareFoundation/openexr/releases
+Source0:	https://github.com/AcademySoftwareFoundation/openexr/releases/download/v%{version}/pyilmbase-%{version}.tar.gz
+# Source0-md5:	7ec7fef6f65594acd612bbe9fbefcea3
 Patch0:		%{name}-link.patch
-URL:		http://www.openexr.com/
+URL:		https://www.openexr.com/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6.3
 BuildRequires:	boost-python-devel
-BuildRequires:	ilmbase-devel >= 2.2.1
-BuildRequires:	libstdc++-devel
+BuildRequires:	ilmbase-devel >= 2.3.0
+BuildRequires:	libstdc++-devel >= 6:5
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	python-numpy-devel
 BuildRequires:	rpm-pythonprov
-Requires:	ilmbase >= 2.2.1
+Requires:	ilmbase >= 2.3.0
 Requires:	python-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,10 +37,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	boost-python-devel
-Requires:	ilmbase-devel >= 2.2.1
-Requires:	libstdc++-devel
-
-%define		specflags -std=c++11
+Requires:	ilmbase-devel >= 2.3.0
+Requires:	libstdc++-devel >= 6:5
 
 %description devel
 Header files for IlmBase Python bindings.
@@ -77,11 +76,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc ChangeLog LICENSE README.md
 %attr(755,root,root) %{_libdir}/libPyIex.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libPyIex.so.23
+%attr(755,root,root) %ghost %{_libdir}/libPyIex.so.24
 %attr(755,root,root) %{_libdir}/libPyImath.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libPyImath.so.23
+%attr(755,root,root) %ghost %{_libdir}/libPyImath.so.24
 %attr(755,root,root) %{py_sitedir}/iexmodule.so
 %attr(755,root,root) %{py_sitedir}/imathmodule.so
 %attr(755,root,root) %{py_sitedir}/imathnumpymodule.so
