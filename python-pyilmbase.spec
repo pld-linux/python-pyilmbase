@@ -48,7 +48,7 @@ Pliki nagłówkowe wiązań Pyhona do bibliotek IlmBase.
 
 %prep
 %setup -q -n pyilmbase-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__libtoolize}
